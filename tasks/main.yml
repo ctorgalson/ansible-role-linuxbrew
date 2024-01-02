@@ -7,7 +7,7 @@
 
 - name: "Linuxbrew | install Linuxbrew."
   ansible.builtin.include_tasks: "tasks/install.yml"
-  when: "not lb__brew_stat.exists"
+  when: "not lb__brew_stat.stat.exists"
 
 - name: "Linuxbrew | configure shell for Linuxbrew."
   ansible.builtin.include_tasks: "{{ task_include }}"
