@@ -2,4 +2,4 @@
 # defaults file for ansible-role-linuxbrew
 lb__owner: "{{ ansible_user }}"
 lb__group: "{{ lb__owner }}"
-lb__shell_configuration_tasks []
+lb__shell_configuration_tasks: []
