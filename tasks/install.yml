@@ -32,6 +32,7 @@
       ansible.builtin.file:
         src: "{{ lb__prefix }}/Homebrew/bin/brew"
         dest: "{{ lb__brew }}"
+        state: "link"
 
     - name: "Linuxbrew | install portable Ruby."
       ansible.builtin.command: "{{ lb__brew }} update --force"
