@@ -1,7 +1,7 @@
 ---
 - name: "Linuxbrew | install dependencies with apt."
   ansible.builtin.apt:
-    name: "{{ lib__deb_dependencies }}"
+    name: "{{ lb__deb_dependencies }}"
   become: true
 
 - name: "Linuxbrew | install Linuxbrew with git and configure."
