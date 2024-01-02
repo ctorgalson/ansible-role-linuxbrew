@@ -38,3 +38,5 @@
       ansible.builtin.command: "{{ lb__brew }} update --force"
       args:
         creates: "{{ lb__prefix }}/Homebrew/vendor/portable-ruby/current"
+      become: true
+      become_user: "{{ lb__owner }}"
