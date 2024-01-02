@@ -23,10 +23,10 @@ lb__directories:
 
 # Repos.
 lb__repos:
-  - url: "https://github.com/Homebrew/brew"
+  - repo: "https://github.com/Homebrew/brew"
     dest: "{{ lb__prefix }}/Homebrew"
     version: "master"
-  - url: "https://github.com/Homebrew/linuxbrew-core"
+  - repo: "https://github.com/Homebrew/linuxbrew-core"
     dest: "{{ lb__prefix }}/Homebrew/Library/Taps/homebrew-core"
     version: "master"
 
