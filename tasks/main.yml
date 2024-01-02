@@ -1,0 +1,16 @@
+---
+# tasks file for ansible-role-linuxbrew
+- name: "Linuxbrew | check if {{ lb__brew }} exists."
+  ansible.builtin.stat:
+    path: "{{ lb__brew }}"
+  register: "lb__brew_stat"
+
+- name: "Linuxbrew | install Linuxbrew."
+  ansible.builtin.include_tasks: "tasks/install.yml"
+  when: "not lb__brew_stat.exists"
+
+- name: "Linuxbrew | configure shell for Linuxbrew."
+  ansible.builtin.include_tasks: "{{ task_include }}"
+  loop: "{{ lb__shell_configuration_tasks }}"
+  loop_control:
+    loop_var: "task_include"

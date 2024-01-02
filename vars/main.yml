@@ -1,0 +1,40 @@
+---
+# vars file for ansible-role-linuxbrew
+
+# Paths.
+lb__prefix: "/home/linuxbrew/.linuxbrew"
+lb__brew: "{{ lb__prefix }}/bin/brew"
+lb__directories:
+  - "bin"
+  - "etc"
+  - "include"
+  - "lib"
+  - "opt"
+  - "sbin"
+  - "share"
+  - "share/zsh"
+  - "share/zsh/site-functions"
+  - "var"
+  - "var/homebrew/linked"
+  - "Cellar"
+  - "Caskroom"
+  - "Homebrew"
+  - "Frameworks"
+
+# Repos.
+lb__repos:
+  - url: "https://github.com/Homebrew/brew"
+    dest: "{{ lb__prefix }}/Homebrew"
+    version: "master"
+  - url: "https://github.com/Homebrew/linuxbrew-core"
+    dest: "{{ lb__prefix }}/Homebrew/Library/Taps/homebrew-core"
+    version: "master"
+
+# Dependencies.
+lb__deb_dependencies:
+  - "build-essential"
+  - "curl"
+  - "file"
+  - "git"
+  - "locales"
+  - "procps"

@@ -1,0 +1,39 @@
+---
+- name: "Linuxbrew | install dependencies with apt."
+  ansible.builtin.apt:
+    name: "{{ lib__deb_dependencies }}"
+  become: true
+
+- name: "Linuxbrew | install Linuxbrew with git and configure."
+  block:
+    - name: "Linuxbrew | create required directories in prefix folder."
+      ansible.builtin.file:
+        path: "{{ lb__prefix }}/{{ directory }}"
+        state: "directory"
+        owner: "{{ lb__owner }}"
+        group: "{{ lb__group }}"
+        mode: "0755"
+      loop: "{{ lb__directories }}"
+      loop_control:
+        loop_var: "directory"
+
+    - name: "Linuxbrew | clone Homebrew repo."
+      git:
+        repo: "{{ clone.repo }}"
+        dest: "{{ clone.dest }}"
+        version: "{{ clone.version }}"
+      loop: "{{ lb__repos }}"
+      loop_control:
+        loop_var: "clone"
+      become: true
+      become_user: "{{ lb__owner }}"
+
+    - name: "Linuxbrew | symlink brew binary into place."
+      ansible.builtin.file:
+        src: "{{ lb__prefix }}/Homebrew/bin/brew"
+        dest: "{{ lb__brew }}"
+
+    - name: "Linuxbrew | install portable Ruby."
+      ansible.builtin.command: "{{ lb__brew }} update --force"
+      args:
+        creates: "{{ lb__prefix }}/Homebrew/vendor/portable-ruby/current"
