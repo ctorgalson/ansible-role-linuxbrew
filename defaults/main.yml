@@ -3,3 +3,6 @@
 lb__owner: "{{ ansible_user }}"
 lb__group: "{{ lb__owner }}"
 lb__shell_configuration_tasks: []
+lb__update_homebrew_when_installing_packages: true
+lb__update_all_when_installing_packages: true
+lb__packages: []

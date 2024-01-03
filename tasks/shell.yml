@@ -1,0 +1,20 @@
+---
+- name: "Linuxbrew | configure shell for Linuxbrew."
+  ansible.builtin.include_tasks: "{{ task_include }}"
+  loop: "{{ lb__shell_configuration_tasks }}"
+  loop_control:
+    loop_var: "task_include"
+
+- name: "Linuxbrew | enable brew binary."
+  block:
+    - name: "Linuxbrew | get user shell."
+      command: "echo \"$SHELL\""
+      become: true
+      become_user: "{{ lb__owner }}"
+      register: "lb__owner_shell"
+
+    - name: "Linuxbrew | Debug"
+      debug:
+        var: lb__owner_shell
+
+  when: "lb__shell_configuration_tasks is empty"
