@@ -22,3 +22,15 @@
   loop: "{{ lb__packages }}"
   loop_control:
     loop_var: "package"
+
+- name: "Linuxbrew | install homebrew taps."
+  community.general.homebrew_tap:
+    name: "{{ tap.name }}"
+    state: "{{ tap.stat|default('present') }}"
+    path: "{{ tap.path|default(omit) }}"
+    url: "{{ tap.url|default(omit) }}"
+  become: true
+  become_user: "{{ lb__owner }}"
+  loop: "{{ lb__taps }}"
+  loop_control:
+    loop_var: "tap"

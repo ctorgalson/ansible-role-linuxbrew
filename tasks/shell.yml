@@ -1,4 +1,5 @@
 ---
+# User shell-related Linuxbrew configuration tasks.
 - name: "Linuxbrew | configure shell for Linuxbrew."
   ansible.builtin.include_tasks: "{{ task_include }}"
   loop: "{{ lb__shell_configuration_tasks }}"

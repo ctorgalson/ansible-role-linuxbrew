@@ -1,5 +1,5 @@
 ---
-# tasks file for ansible-role-linuxbrew
+# Main supervisory Linuxbrew configuration tasks.
 - name: "Linuxbrew | check if {{ lb__brew }} exists."
   ansible.builtin.stat:
     path: "{{ lb__brew }}"
@@ -13,7 +13,6 @@
 
 - name: "Linuxbrew | configure shell for Linuxbrew use."
   ansible.builtin.include_tasks: "tasks/shell.yml"
-  when: "not lb__brew_stat.stat.exists"
 
 - name: "Linuxbrew | update brew and install packages."
   ansible.builtin.include_tasks: "tasks/packages.yml"
