@@ -5,14 +5,9 @@
     path: "{{ lb__brew }}"
   register: "lb__brew_stat"
 
-# Todo: maybe check if brew has been *sourced* too using command -v brew.
-
 - name: "Linuxbrew | install Linuxbrew."
   ansible.builtin.include_tasks: "tasks/install.yml"
   when: "not lb__brew_stat.stat.exists"
-
-- name: "Linuxbrew | configure shell for Linuxbrew use."
-  ansible.builtin.include_tasks: "tasks/shell.yml"
 
 - name: "Linuxbrew | update brew and install packages."
   ansible.builtin.include_tasks: "tasks/packages.yml"
@@ -20,3 +15,9 @@
     lb__packages|length
     or lb__update_homebrew_when_installing_packages
     or lb__update_all_when_installing_packages
+
+- name: "Linuxbrew | configure shell for Linuxbrew."
+  ansible.builtin.include_tasks: "{{ task_include }}"
+  loop: "{{ lb__shell_configuration_tasks }}"
+  loop_control:
+    loop_var: "task_include"
