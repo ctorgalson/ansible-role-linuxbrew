@@ -4,6 +4,8 @@
 # Paths.
 lb__prefix: "/home/linuxbrew/.linuxbrew"
 lb__brew: "{{ lb__prefix }}/bin/brew"
+lb__homebrew_dir: "{{ lb__prefix }}/Homebrew"
+lb__homebrew_core_dir: "{{ lb__prefix }}/Homebrew/Library/Taps/homebrew-core"
 lb__directories:
   - "bin"
   - "etc"
@@ -24,10 +26,10 @@ lb__directories:
 # Repos.
 lb__repos:
   - repo: "https://github.com/Homebrew/brew"
-    dest: "{{ lb__prefix }}/Homebrew"
+    dest: "{{ lb__homebrew_dir }}"
     version: "master"
   - repo: "https://github.com/Homebrew/linuxbrew-core"
-    dest: "{{ lb__prefix }}/Homebrew/Library/Taps/homebrew-core"
+    dest: "{{ lb__homebrew_core_dir }}"
     version: "master"
 
 # Dependencies.

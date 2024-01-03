@@ -30,13 +30,13 @@
 
     - name: "Linuxbrew | symlink brew binary into place."
       ansible.builtin.file:
-        src: "{{ lb__prefix }}/Homebrew/bin/brew"
+        src: "{{ lb__homebrew_dir }}/bin/brew"
         dest: "{{ lb__brew }}"
         state: "link"
 
     - name: "Linuxbrew | install portable Ruby."
       ansible.builtin.command: "{{ lb__brew }} update --force"
       args:
-        creates: "{{ lb__prefix }}/Homebrew/vendor/portable-ruby/current"
+        creates: "{{ lb__homebrew_dir }}/vendor/portable-ruby/current"
       become: true
       become_user: "{{ lb__owner }}"
