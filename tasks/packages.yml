@@ -2,7 +2,7 @@
 - name: "Linuxbrew | update homebrew"
   community.general.homebrew:
     update_homebrew: "{{ lb__update_homebrew_when_installing_packages }}"
-    update_all: "{{ lb__update_all_when_installing_packages }}"
+    upgrade_all: "{{ lb__update_all_when_installing_packages }}"
 
 - name: "Linuxbrew | install package '{{ package.name }}'."
   community.general.homebrew:
