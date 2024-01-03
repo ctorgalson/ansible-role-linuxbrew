@@ -1,4 +1,5 @@
 ---
+# Brew, package, and tap install and upgrade tasks.
 - name: "Linuxbrew | update homebrew."
   community.general.homebrew:
     update_homebrew: "{{ lb__update_homebrew_when_installing_packages }}"
