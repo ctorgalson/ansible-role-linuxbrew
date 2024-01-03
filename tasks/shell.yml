@@ -17,4 +17,4 @@
       debug:
         var: lb__owner_shell
 
-  when: "lb__shell_configuration_tasks is empty"
+  when: "not lb__shell_configuration_tasks|length"
