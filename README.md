@@ -3,6 +3,11 @@
 Manually installs linuxbrew, brew packages, and taps on Ubuntu/Debian to avoid
 piping a shell script to `sh` :)
 
+Credit to [markosamuli](https://github.com/markosamuli) for [a good Linuxbrew
+role](https://github.com/markosamuli/ansible-linuxbrew) that didn't quite match
+up with my needs. I've used that role as the basis for this one (and probably
+introduced my own mistakes).
+
 ## Tasks
 
 The role is broken down into three tasks files:
