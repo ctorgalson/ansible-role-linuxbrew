@@ -3,6 +3,12 @@
 Manually installs linuxbrew, brew packages, and taps on Ubuntu/Debian to avoid
 piping a shell script to `sh` :)
 
+The role assumes that it could be run in a playbook that uses `become: true`,
+so it requires the name of a non-root user to run `brew` commands safely. For
+other tasks--such as installing dependencies using `apt`--it uses become to
+escalate privileges. The result is, it should work regardless of the value of
+`ansible_user`, _as long as the `{{ lb__owner }}` user exists_.
+
 Credit to [markosamuli](https://github.com/markosamuli) for [a good Linuxbrew
 role](https://github.com/markosamuli/ansible-linuxbrew) that didn't quite match
 up with my needs. I've used that role as the basis for this one (and probably
