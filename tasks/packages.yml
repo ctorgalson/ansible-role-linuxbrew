@@ -10,6 +10,8 @@
     state: "{{ package.stat|default('present') }}"
     path: "{{ package.path|default(omit) }}"
     install_options: "{{ package.install_options|default(omit) }}"
+  become: true
+  become_user: "{{ lb__owner }}"
   loop: "{{ lb__packages }}"
   loop_control:
     loop_var: "package"
