@@ -3,6 +3,43 @@
 Manually installs linuxbrew, brew packages, and taps on Ubuntu/Debian to avoid
 piping a shell script to `sh` :)
 
+## Tasks
+
+The role is broken down into three tasks files:
+
+### `main.yml`
+
+This file:
+
+  - checks if `brew` already exists,
+  - includes `install.yml` when `brew` does not yet exist,
+  - includes `packages.yml` when the `lb__packages` variable is not empty, _or_
+    either of the two variables `lb__update_homebrew_when_installing_packages`,
+    or `lb__upgrade_all_when_installing_packages` is `true`.
+  - includes any number of shell-configuration (or other) task files provided
+    in `lb__shell_configuration_tasks`.
+
+### `install.yml`
+
+This file:
+
+  - installs dependencies using `apt`,
+  - creates required Linuxbrew directories,
+  - clones the main and core Homebrew repos,
+  - symlinks the `brew` binary,
+  - installs the `portable-ruby` package.
+
+### `packages.yml`
+
+This file:
+
+  - updates `brew` itself when `lb__update_homebrew_when_installing_packages`
+    is `true`,
+  - updates all `brew` packages when `lb__upgrade_all_when_installing_packages`
+    is `true`,
+  - installs any `brew` packages defined in `lb__packages`,
+  - installs any `brew` taps defined in `lb__taps`.
+
 ## Requirements
 
 No special requirements.
