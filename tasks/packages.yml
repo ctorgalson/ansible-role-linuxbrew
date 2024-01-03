@@ -1,12 +1,17 @@
 ---
-- name: "Linuxbrew | update homebrew"
+- name: "Linuxbrew | update homebrew."
   community.general.homebrew:
     update_homebrew: "{{ lb__update_homebrew_when_installing_packages }}"
-    upgrade_all: "{{ lb__update_all_when_installing_packages }}"
   become: true
   become_user: "{{ lb__owner }}"
 
-- name: "Linuxbrew | install package '{{ package.name }}'."
+- name: "Linuxbrew | update homebrew packages."
+  community.general.homebrew:
+    upgrade_all: "{{ lb__upgrade_all_when_installing_packages }}"
+  become: true
+  become_user: "{{ lb__owner }}"
+
+- name: "Linuxbrew | install homebrew packages."
   community.general.homebrew:
     name: "{{ package.name }}"
     state: "{{ package.stat|default('present') }}"
