@@ -14,3 +14,10 @@
 - name: "Linuxbrew | configure shell for Linuxbrew use."
   ansible.builtin.include_tasks: "tasks/shell.yml"
   when: "not lb__brew_stat.stat.exists"
+
+- name: "Linuxbrew | update brew and install packages."
+  ansible.builtin.include_tasks: "tasks/packages.yml"
+  when: >
+    lb__packages is not empty
+    or lb__update_homebrew_when_installing_packages
+    or lb__update_all_when_installing_packages
