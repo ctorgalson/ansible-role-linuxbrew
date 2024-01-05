@@ -18,7 +18,7 @@
       loop_control:
         loop_var: "directory"
 
-    - name: "Linuxbrew | clone Homebrew repo."
+    - name: "Linuxbrew | clone Homebrew repos."
       git:
         repo: "{{ clone.repo }}"
         dest: "{{ clone.dest }}"
