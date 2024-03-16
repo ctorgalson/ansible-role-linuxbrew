@@ -28,9 +28,6 @@ lb__repos:
   - repo: "https://github.com/Homebrew/brew"
     dest: "{{ lb__homebrew_dir }}"
     version: "master"
-  - repo: "https://github.com/Homebrew/linuxbrew-core"
-    dest: "{{ lb__homebrew_core_dir }}"
-    version: "master"
 
 # Dependencies.
 lb__deb_dependencies:
