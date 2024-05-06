@@ -37,3 +37,9 @@ lb__deb_dependencies:
   - "git"
   - "locales"
   - "procps"
+
+lb__fed_dependencies:
+  - "@Development tools"
+  - "curl"
+  - "file"
+  - "git"
