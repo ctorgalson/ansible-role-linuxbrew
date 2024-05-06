@@ -79,7 +79,7 @@ No special requirements.
 | `lb__update_homebrew_when_installing_packages` | boolean | `true`               | Whether or not to update `brew` when installing new pacakges. |
 | `lb__upgrade_all_when_installing_packages`     | boolean | `true`               | Whether or not to upgrade Linuxbrew package when installing new pacakges. |
 | `lb__packages`                                 | list    | `[]`                 | A list of Linuxbrew packages to install. Each item must specify a `name` property, and can have optional `state`, `path`, and `install_options` properties suitable for `ansible.community.homebrew`. | 
-| `lb__tabs`                                     | list    | `[]`                 | A list of Linuxbrew taps to install. Each item must specify a `name` property, and can have `state`, `path`, and `url` properties suitable for `ansible.community.homebrew_tap`. |
+| `lb__taps`                                     | list    | `[]`                 | A list of Linuxbrew taps to install. Each item must specify a `name` property, and can have `state`, `path`, and `url` properties suitable for `ansible.community.homebrew_tap`. |
 
 ## Dependencies
 
