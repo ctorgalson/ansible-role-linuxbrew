@@ -12,18 +12,6 @@
   become: true
   become_user: "{{ lb__owner }}"
 
-- name: "Linuxbrew | install homebrew packages."
-  community.general.homebrew:
-    name: "{{ package.name }}"
-    state: "{{ package.stat|default('present') }}"
-    path: "{{ package.path|default(omit) }}"
-    install_options: "{{ package.install_options|default(omit) }}"
-  become: true
-  become_user: "{{ lb__owner }}"
-  loop: "{{ lb__packages }}"
-  loop_control:
-    loop_var: "package"
-
 - name: "Linuxbrew | install homebrew taps."
   community.general.homebrew_tap:
     name: "{{ tap.name }}"
@@ -35,3 +23,15 @@
   loop: "{{ lb__taps }}"
   loop_control:
     loop_var: "tap"
+
+- name: "Linuxbrew | install homebrew packages."
+  community.general.homebrew:
+    name: "{{ package.name }}"
+    state: "{{ package.stat|default('present') }}"
+    path: "{{ package.path|default(omit) }}"
+    install_options: "{{ package.install_options|default(omit) }}"
+  become: true
+  become_user: "{{ lb__owner }}"
+  loop: "{{ lb__packages }}"
+  loop_control:
+    loop_var: "package"
