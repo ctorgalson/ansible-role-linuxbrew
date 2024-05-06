@@ -10,7 +10,7 @@
 
     - name: "Linuxbrew | install dependencies with dnf."
       ansible.builtin.dnf:
-        name: "{{ lb__dnf_dependencies }}"
+        name: "{{ lb__fed_dependencies }}"
       become: true
       when: "ansible_os_family == 'RedHat'"
 
