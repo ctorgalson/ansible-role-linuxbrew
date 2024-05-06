@@ -1,9 +1,18 @@
 ---
 # Linuxbrew installation tasks.
-- name: "Linuxbrew | install dependencies with apt."
-  ansible.builtin.apt:
-    name: "{{ lb__deb_dependencies }}"
-  become: true
+- name: "Linuxbrew | install package dependencies."
+  block:
+    - name: "Linuxbrew | install dependencies with apt."
+      ansible.builtin.apt:
+        name: "{{ lb__deb_dependencies }}"
+      become: true
+      when: "ansible_os_family == 'Debian'"
+
+    - name: "Linuxbrew | install dependencies with dnf."
+      ansible.builtin.dnf:
+        name: "{{ lb__fed_dependencies }}"
+      become: true
+      when: "ansible_os_family == 'RedHat'"
 
 - name: "Linuxbrew | install Linuxbrew with git and configure."
   block:

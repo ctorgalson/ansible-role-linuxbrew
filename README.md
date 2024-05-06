@@ -1,7 +1,7 @@
 # Linuxbrew (`ctorgalson.linuxbrew`)
 
-Manually installs linuxbrew, brew packages, and taps on Ubuntu/Debian to avoid
-piping a shell script to `sh` :)
+Manually installs linuxbrew, brew packages, and taps on Ubuntu/Debian and Fedora
+to avoid piping a shell script to `sh` :)
 
 The role assumes that it could be run in a playbook that uses `become: true`,
 so it requires the name of a non-root user to run `brew` commands safely. For
